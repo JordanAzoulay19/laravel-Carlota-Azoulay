@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\event;
 use Auth;
-use App\Models\Event;
 use Illuminate\Http\Request;
 
-class EventController extends Controller
+class eventController extends Controller
 {
     public function __construct(){
         $this->middleware('auth', ['except' => ['index','show']]);
@@ -19,8 +19,8 @@ class EventController extends Controller
     public function index(){
 
 
-        //Lister les articles
-        $events= Event::orderBy('id','desc')->paginate(3);
+        //Lister les évenements
+        $events= event::orderBy('id','desc')->paginate(3);
         return view('events.index', compact('events'));
     }
 
@@ -31,7 +31,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //Afficher le formulaire de création d'article
+        //Afficher le formulaire de création d'évenement
         return view('events.create');
     }
 
@@ -47,13 +47,13 @@ class EventController extends Controller
 
         $this->validate($request, [
             'title' => 'required|min:6',
-            'content' => 'required|min:20'
+            'description' => 'required|min:20'
         ],
             [
                 'title.required' => 'Titre requis',
                 'title.min' => 'Le titre doit faire au moins 6 caractères',
-                'content.required' => 'Contenu requis',
-                'content.min' => 'Le contenu doit faire au moins 20 caractères'
+                'description.required' => 'Contenu requis',
+                'description.min' => 'Le contenu doit faire au moins 20 caractères'
             ]);
 
 
@@ -64,7 +64,7 @@ class EventController extends Controller
 
         return redirect()
             ->route('event.index')
-            ->with('success', 'L\'article a bien été ajouté');
+            ->with('success', 'L\'évenement a bien été ajouté');
 
     }
 
@@ -76,9 +76,9 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event = Event::findOrFail($id);
+        $event = event::findOrFail($id);
 
-        //Afficher un article
+        //Afficher un évenement
         return view('events.show', compact('event'));
     }
 
@@ -90,8 +90,8 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        // Afficher le formulaire d'édition d'article
-        $event = Event::findOrFail($id);
+        // Afficher le formulaire d'édition d'évenement
+        $event = event::findOrFail($id);
         return view('events.edit', compact('event'));
     }
 
@@ -106,18 +106,18 @@ class EventController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|min:6',
-            'content' => 'required|min:20'
+            'description' => 'required|min:20'
         ],
             [
                 'title.required' => 'Titre requis',
                 'title.min' => 'Le titre doit faire au moins 6 caractères',
-                'content.required' => 'Contenu requis',
-                'content.min' => 'Le contenu doit faire au moins 20 caractères'
+                'description.required' => 'Contenu requis',
+                'description.min' => 'Le contenu doit faire au moins 20 caractères'
             ]);
         // Enregistre le formulaire d'édition en BDD
 
 
-        $event = Event::findOrFail($id);
+        $event = event::findOrFail($id);
         $input = $request->input();
         $event->fill($input)->save();
 
@@ -125,7 +125,7 @@ class EventController extends Controller
 
         return redirect()
             ->route('event.show',$id)
-            ->with('success', 'L\'evenement a bien été mis à jour');
+            ->with('success', 'L\'évenement a bien été mis à jour');
     }
 
 
@@ -136,12 +136,19 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {    //Supprime l'article
+    {    //Supprime l'évenement
 
-        $event = Event::findOrFail($id);
+        $event = event::findOrFail($id);
         $event->delete();
         return redirect()
             ->route('event.index')
-            ->with('success', 'L\'article a bien été supprimé');
+            ->with('success', 'L\'évenement a bien été supprimé');
     }
+
+
 }
+
+
+
+
+

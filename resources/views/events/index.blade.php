@@ -5,23 +5,25 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Liste des évenements</div>
+                    <div class="panel-heading">Liste des Evenements</div>
+
                     <div class="panel-body">
-                        Afficher la liste des évenements
-                        @foreach($events as $event)
-                            <h1>{{$event->id}}</h1>
-                            <a href="{{ route('events.show', $event->id) }}">
-                                <h2 style="color: #00A8EF ">{{$event->title}}</h2>
-                            </a>
-
-
-                            <p style="color: darkred ">{{$event->content}}</p>
+                        @foreach($list as $event)
+                            <h2>
+                                <a href="{{ route('event.show', $event->id) }}"><FONT SIZE="5pt"><b>{{ $event->title }}</b></FONT></a>
+                            </h2>
+                            <p>{{ $event->place }}</p>
+                            <p>{{ $event->price }} euros </p>
+                            <p>{{ $event->description }}</p>
+                            <b>Proposé par : </b> {{ $event->user->name }}
+                            <hr>
                         @endforeach
-                        {{$events->links()}}
+
+
+                        {!! $list->links() !!}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

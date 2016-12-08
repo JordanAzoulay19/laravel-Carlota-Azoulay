@@ -12,26 +12,26 @@
                         'method' => 'POST')) !!}
                         {!! Form::label('title', 'Titre') !!}
 
-                        {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Écrivez votre Titre'] ) !!}
-                        <br />
-                        {!! Form::label('content', 'Contenu') !!}
-                        {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Écrivez votre Description'] ) !!}
-                        <br />
-                        {!! Form::label('datefirst', 'Debut') !!}
+                        {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Écrivez le nom de votre évènement'] ) !!}
 
-                        {!! Form::text('datefirst', null, ['class' => 'form-control', 'placeholder' => 'Début de l\'évènement'] ) !!}
-                        <br />
-                        {!! Form::label('dateend', 'fin') !!}
-                        {!! Form::textarea('dateend', null, ['class' => 'form-control', 'placeholder' => 'Fin de l\'évenement'] ) !!}
-                        <br />
-                        {!! Form::label('place', 'Lieu') !!}
+                        {!! Form::label('description', 'Description') !!}
+                        {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Écrivez votre Description'] ) !!}
 
-                        {!! Form::text('place', null, ['class' => 'form-control', 'placeholder' => 'Le lieu de l\'évenement'] ) !!}
-                        <br />
-                        {!! Form::label('price', 'prix') !!}
+                        {!! Form::label('start', 'Debut') !!}
 
-                        {!! Form::text('price', null, ['class' => 'form-control', 'placeholder' => 'Prix de l\'évenement'] ) !!}
-                        <br />
+                        {!! Form::text('start', null, ['class' => 'form-control', 'placeholder' => 'Heure de début de l\'évènement'] ) !!}
+
+                        {!! Form::label('finish', 'fin') !!}
+                        {!! Form::text('finish', null, ['class' => 'form-control', 'placeholder' => 'Heure de fin de l\'évenement'] ) !!}
+
+                        {!! Form::label('lieu', 'Lieu') !!}
+
+                        {!! Form::text('lieu', null, ['class' => 'form-control', 'placeholder' => 'Le lieu de l\'évenement'] ) !!}
+
+                        {!! Form::label('tarif', 'prix') !!}
+
+                        {!! Form::text('tarif', null, ['class' => 'form-control', 'placeholder' => 'Tarif de l\'évenement'] ) !!}
+
 
 
 

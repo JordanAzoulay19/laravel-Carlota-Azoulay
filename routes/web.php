@@ -14,12 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/hello', function(){
-    return 'Hello World!';
+
+Route::get('/admin', function () {
+    return view('admin');
 });
 
-Route::resource('/post','PostController');
 
 Auth::routes();
-
+Route::resource('/post', 'PostController');
+Route::resource('/event', 'EventController');
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+Route::get('/admin', 'AdminController@index');
